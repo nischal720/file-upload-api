@@ -1,6 +1,9 @@
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const fileUpload = require("express-fileupload");
+require("dotenv").config();
+require("./src/config/dbConfig");
 
 global.__basedir = __dirname;
 
@@ -9,6 +12,7 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(fileUpload())
 
 const initRoutes = require("./src/routes");
 
